@@ -1,10 +1,7 @@
 package com.wappi.qa.steps.user;
 
 import com.wappi.qa.models.Credentials;
-import com.wappi.qa.tasks.BackHome;
-import com.wappi.qa.tasks.GetLogin;
-import com.wappi.qa.tasks.OpenBrowser;
-import com.wappi.qa.tasks.SelectProduct;
+import com.wappi.qa.tasks.*;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -45,21 +42,7 @@ public class CouponOrderSteps {
     }
     @When("^user get coupon order a product$")
     public void userGetCouponOrderAProduct() {
-        OnStage.theActorInTheSpotlight().attemptsTo(Click.on(GET_COUPON));
-        Actions a = new Actions(myBrowser);
-        WebElement code = myBrowser.findElement(COUPON_CODE);
-        OnStage.theActorInTheSpotlight().attemptsTo(Click.on(COUPON_CODE));
-        OnStage.theActorInTheSpotlight().attemptsTo(Click.on(COUPON_CODE));
-        a.doubleClick(code).build().perform();
-        a.keyDown(Keys.CONTROL).sendKeys("a");
-        a.sendKeys("c");
-        OnStage.theActorInTheSpotlight().attemptsTo(Click.on(CLOSE_CODE));
-        OnStage.theActorInTheSpotlight().attemptsTo(BackHome.goHome());
-        OnStage.theActorInTheSpotlight().attemptsTo(SelectProduct.order());
-        WebElement pay = myBrowser.findElement(COUPON_FIELD);
-        OnStage.theActorInTheSpotlight().attemptsTo(Click.on(COUPON_FIELD));
-        a.doubleClick(pay).keyDown(Keys.CONTROL).sendKeys("v");
-        a.keyUp(Keys.CONTROL).build();
+       OnStage.theActorInTheSpotlight().attemptsTo(CouponOrder.couponOrder());
 
     }
 
